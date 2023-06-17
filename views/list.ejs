@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Music Manager - List</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="title" content="Music Manager">
+    <meta name="description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta name="keywords" content="RJRYT, Music Manager">
+    <meta name="author" content="RJRYT">
+    <meta name="copyright" content="RJRYT">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="dashboard">
+    <meta property="og:title" content="Music Manager">
+    <meta property="og:description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta property="og:image" content="<%process.cwd()%>/img/logo.png">
+    <!-- End Meta Tags -->
+    <link rel="shortcut icon" href="<%process.cwd()%>/img/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="<%process.cwd()%>/img/logo.png">
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #8beaea;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+    <h1>All Uploaded audio files</h1>
+    <table>
+        <tr>
+            <th>Path \ Name</th>
+            <th>Play</th>
+            <th>Download</th>
+            <%if(admin){%>
+                <th>Delete</th>
+                <%}%>
+        </tr>
+        <%files.forEach((file)=> {%>
+            <tr>
+                <td>
+                    <%=file.slice(6, file.length)%>
+                </td>
+                <td><a href="../music/<%= file.slice(6, file.length) %>" target="_blank">play</a></td>
+                <td><a href="../music/<%= file.slice(6, file.length) %>" target="_blank" download>Download audio</a>
+                </td>
+                <%if(admin){%>
+                    <td><a href="../delete/<%=code%>/<%= file.slice(6, file.length) %>" target="_blank">Delete
+                            audio</a></td>
+                    <%}%>
+            </tr>
+            <%})%>
+    </table>
+    <br><br><br><a href="/">New Upload</a>
+</body>
+
+</html>

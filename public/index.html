@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Music Manager - Upload</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="title" content="Music Manager">
+    <meta name="description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta name="keywords" content="RJRYT, Music Manager">
+    <meta name="author" content="RJRYT">
+    <meta name="copyright" content="RJRYT">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="dashboard">
+    <meta property="og:title" content="Music Manager">
+    <meta property="og:description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta property="og:image" content="./img/logo.png">
+    <!-- End Meta Tags -->
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="./img/logo.png">
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .center {
+            background-color: blanchedalmond;
+            border: 5px solid #0bcee7;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+
+        input[type="file"] {
+            position: relative;
+        }
+
+        input[type="file"]::file-selector-button {
+            width: 136px;
+            color: transparent;
+        }
+
+        /* Faked label styles and icon */
+        input[type="file"]::before {
+            position: absolute;
+            pointer-events: none;
+            top: 10px;
+            left: 16px;
+            height: 20px;
+            width: 20px;
+            content: "";
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+        }
+
+        input[type="file"]::after {
+            position: absolute;
+            pointer-events: none;
+            top: 11px;
+            left: 40px;
+            color: #0964b0;
+            content: "Upload File";
+        }
+
+        /* ------- From Step 1 ------- */
+
+        /* file upload button */
+        input[type="file"]::file-selector-button {
+            border-radius: 4px;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+            margin-right: 16px;
+            transition: background-color 200ms;
+        }
+
+        /* file upload button hover state */
+        input[type="file"]::file-selector-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* file upload button active state */
+        input[type="file"]::file-selector-button:active {
+            background-color: #e5e7eb;
+        }
+
+        input[type=submit] {
+            border-radius: 4px;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+            margin-right: 16px;
+            transition: background-color 200ms;
+        }
+    </style>
+    <script type="text/javascript">
+        function AlertFilesize() {
+            let SelectedFile;
+            if (window.ActiveXObject) {
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var filepath = document.getElementById('fileInput').value;
+                var thefile = fso.getFile(filepath);
+                var sizeinbytes = thefile.size;
+                SelectedFile = thefile;
+            } else {
+                var sizeinbytes = document.getElementById('fileInput').files[0].size;
+                SelectedFile = document.getElementById('fileInput').files[0];
+            }
+            if (SelectedFile.type != 'audio/mpeg') {
+                document.getElementById("data").innerHTML = "Please select a mp3 file";
+                document.getElementById("fileSelector").reset()
+                return;
+            }
+            var fSExt = new Array('Bytes', 'KB', 'MB', 'GB');
+            fSize = sizeinbytes; i = 0; while (fSize > 900) { fSize /= 1024; i++; }
+            const FileSize = (Math.round(fSize * 100) / 100) + ' ' + fSExt[i];
+            let text = document.getElementById("data").innerHTML = "File Information<br>Name: " + SelectedFile.name + "<br>Size: " + FileSize;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <h1>SAMP Music Manager</h1>
+        <h3>Upload Music</h3>
+        <form id="fileSelector" method="POST" action="/upload" enctype="multipart/form-data">
+            <input id="fileInput" type="file" name="myFile" accept="audio/mp3" onchange="AlertFilesize();" required />
+            <input type="submit" value="Start Uploading" />
+        </form>
+        <p id="data"></p>
+    </div>
+</body>
+
+</html>

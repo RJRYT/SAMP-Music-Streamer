@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Music Manager - Rename</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="title" content="Music Manager">
+    <meta name="description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta name="keywords" content="RJRYT, Music Manager">
+    <meta name="author" content="RJRYT">
+    <meta name="copyright" content="RJRYT">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="dashboard">
+    <meta property="og:title" content="Music Manager">
+    <meta property="og:description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta property="og:image" content="<%process.cwd()%>/img/logo.png">
+    <!-- End Meta Tags -->
+    <link rel="shortcut icon" href="<%process.cwd()%>/img/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="<%process.cwd()%>/img/logo.png">
+    <style>
+        body {
+            background-color: beige;
+        }
+        p{
+            text-align: center;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .center {
+            text-align: center;
+            background-color: blanchedalmond;
+            border: 5px solid #0bcee7;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+       
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <h1>Rename Audio</h1>
+        <form action="/api/rename" method="post">
+            <p>Select the audio you want to rename</p>
+            <select name="file" id="file" required>
+                <option value="">Select a audio</option>
+                <%files.forEach((file) => {%>
+                <option value="<%= file.slice(6, file.length) %>"><%= file.slice(6, file.length) %></option>
+                <%})%>
+              </select>
+            <p>Enter the new name of the audio</p>
+            <input type="text" name="newname" placeholder="Enter the new name of the file" required>
+            <p>Enter the Auth code</p>
+            <input type="text" name="auth" placeholder="Enter the auth text" required>
+            <input type="submit" value="Rename">
+        </form>
+    </div>
+</body>
+
+</html>

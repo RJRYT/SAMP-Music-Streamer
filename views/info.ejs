@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Music Manager - Uploaded(<%=name%>)</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="title" content="Music Manager">
+    <meta name="description" content="Share your Music files on Music Manager | Powered by RJRYT.">
+    <meta name="keywords" content="RJRYT, Music Manager">
+    <meta name="author" content="RJRYT">
+    <meta name="copyright" content="RJRYT">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="dashboard">
+    <meta property="og:title" content="Music Manager">
+    <meta property="og:description" content="Share your public Music on Music Manager | Powered by RJRYT.">
+    <meta property="og:image" content="<%process.cwd()%>/img/logo.png">
+    <!-- End Meta Tags -->
+    <link rel="shortcut icon" href="<%process.cwd()%>/img/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="<%process.cwd()%>/img/logo.png">
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .center {
+            text-align: center;
+            background-color: blanchedalmond;
+            border: 5px solid #0bcee7;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+
+        audio:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(2px 3px 3px #333);
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: #56AEFF;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <h1>Uploaded Audio</h1>
+        <p><br>Name: <%=name%><br>Size: <%=size%><br>Direct Link: <a href="./music/<%=name%>">Click Here</a></p>
+        <audio controls>
+            <source src="./music/<%=name%>" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    </div>
+</body>
+
+</html>
