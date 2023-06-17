@@ -36,3 +36,30 @@ Your server is ready to use.
 ### Usage
 
 When your server is marked as running. Open server on chrome. upload music as your choice.
+
+  ##### Routes
+
+  - `yourdomain.com/` : Upload new music
+  - `yourdomain.com/list` : List all uploaded music
+  - `yourdomain.com/music` : List all uploaded music (For SAMP)
+  - `yourdomain.com/rename/:authcode` : To rename uploaded music. Only allowed who know Authcode
+  - `yourdomain.com/delete/:authcode/:filename` : to delete uploaded music. Only allowed who know Authcode eg: `yourdomain.com/delete/demoauthcode/demo.mp3`
+
+## Developer credits
+
+This script build by [RJRYT](https://rjryt.me)
+
+## Copyrights
+
+SAMP-Music-Streamer is licensed under the [Apache License 2.0
+](https://github.com/RJRYT/SAMP-Music-Streamer/blob/main/LICENSE)
+
+## Developer Contact
+
+#### RJRYT
+  - [Website](https://rjryt.me)
+  - [Replit](https://replit.com/@Somaliyo)
+  - [Github](https://github.com/RJRYT)
+  - [Email](mailto:robinjratr@gmail.com)
+
+### If you like this project please give us a 🌟 star.
