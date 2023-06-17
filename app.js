@@ -147,5 +147,5 @@ function listAudioFiles(dir) {
 /**
  * Listening to given port 
  */
-app.listen(port, () => console.log(`Example app listening on port http://localhost:${port}/`));
+app.listen(port, () => console.log(`SAMP Music Streamer app listening on port http://localhost:${port}/`));
 
