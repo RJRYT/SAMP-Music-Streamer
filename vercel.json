@@ -1,1 +1,21 @@
+{
+  "version": 2,
+  "name": "sampmusicstreamer",
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
+  ],
+  "env": {
+    "AUTH": "rjr",
+    "PORT": "5000"
+  }
+}
 
