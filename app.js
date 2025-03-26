@@ -7,6 +7,7 @@ const path = require('path');
 const fileUpload = require("express-fileupload");
 const bodyParser = require('body-parser');
 const fs = require("fs");
+const morgan = require("morgan");
 const ejsMate = require('ejs-mate');
 const cors = require('cors');
 const app = express();
@@ -22,6 +23,7 @@ app.use('/music', express.static(__dirname + '/music'));
 app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(morgan('dev'))
 app.use(cors());
 /**
  * Main router
